@@ -1,0 +1,66 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+
+
+<div class ="row mt -2">
+    
+    <div class ="col-md-4">
+        <h5>Graphique 1</h5>
+        <hr>
+
+    </div>
+
+    <div class="col-md-8">
+        <div>
+            <canvas id="myChart"></canvas>
+          </div>
+          
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          
+          <script>
+            const ctx = document.getElementById('myChart');
+
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: data.study(row => row.csp),
+                datasets: [{
+                  label: 'Dépenses par catégories',
+                  data: data.study(row => row.prix_panier),
+                  backgroundColor: [
+                    'rgba(255, 244, 0, 0.57)',
+                    'rgba(143, 219, 143, 0.8)',
+                    'rgba(140, 138, 172, 0.8)',
+                    'rgba(250, 31, 31, 0.81)',
+                    'rgba(40, 79, 246, 0.59)',
+                    'rgba(237, 191, 99, 0.8)'
+                  ],
+                  borderColor: [
+                    'rgba(247, 237, 0, 0.81)',
+                   'rgba(7, 99, 7, 0.8)',
+                   'rgba(55, 53, 87, 0.8)',
+                   'rgba(232, 33, 33, 1)',
+                   'rgba(17, 36, 119, 1)',
+                    'rgba(252, 168, 0, 0.8)'
+                    ],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>
+          
+
+    </div>
+
+</div>
+
+
+{% endblock %}
